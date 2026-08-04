@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harold & Myca</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Leaf Curtain Overlay (Covers the screen when tapped) -->
+  <div class="leaf-curtain" id="leaf-curtain">
+    <div class="curtain-leaf curtain-top-left">
+      <svg viewBox="0 0 300 300" fill="none"><path d="M0 0 C150 50, 250 150, 300 300 C150 250, 50 150, 0 0" fill="var(--espresso)" opacity="0.98"/></svg>
+    </div>
+    <div class="curtain-leaf curtain-top-right">
+      <svg viewBox="0 0 300 300" fill="none"><path d="M300 0 C150 50, 50 150, 0 300 C150 250, 250 150, 300 0" fill="var(--cocoa)" opacity="0.98"/></svg>
+    </div>
+    <div class="curtain-leaf curtain-bottom-left">
+      <svg viewBox="0 0 300 300" fill="none"><path d="M0 300 C150 250, 250 150, 300 0 C150 50, 50 150, 0 300" fill="var(--cocoa)" opacity="0.98"/></svg>
+    </div>
+    <div class="curtain-leaf curtain-bottom-right">
+      <svg viewBox="0 0 300 300" fill="none"><path d="M300 300 C150 250, 50 150, 0 0 C150 50, 250 150, 300 300" fill="var(--espresso)" opacity="0.98"/></svg>
+    </div>
+  </div>
+
+  <div class="screen" id="screen">
+
+    <!-- Top Left Winding Vine & Stem -->
+    <div class="stem-container stem-top-left">
+      <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-10 -10 C 20 40, 40 90, 30 140 C 25 165, 55 185, 90 190" stroke="var(--espresso)" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>
+        <path d="M30 85 C 60 70, 90 80, 115 65" stroke="var(--espresso)" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
+        
+        <g class="dancing-leaf leaf-1">
+          <path d="M30 140 C 5 130, -5 105, 10 90 C 25 110, 28 130, 30 140" fill="var(--cocoa)" opacity="0.35"/>
+          <path d="M30 140 Q 10 115 10 90" stroke="var(--espresso)" stroke-width="1" opacity="0.4"/>
+        </g>
+        <g class="dancing-leaf leaf-2">
+          <path d="M30 85 C 50 60, 45 30, 25 20 C 20 45, 25 70, 30 85" fill="var(--camel)" opacity="0.4"/>
+          <path d="M30 85 Q 32 50 25 20" stroke="var(--espresso)" stroke-width="1" opacity="0.4"/>
+        </g>
+        <g class="dancing-leaf leaf-3">
+          <path d="M115 65 C 135 45, 130 20, 110 15 C 105 35, 110 55, 115 65" fill="var(--cocoa)" opacity="0.35"/>
+        </g>
+        <g class="dancing-leaf leaf-4">
+          <path d="M90 190 C 115 185, 130 165, 125 145 C 105 155, 95 175, 90 190" fill="var(--camel)" opacity="0.38"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Bottom Right Winding Vine & Stem -->
+    <div class="stem-container stem-bottom-right">
+      <svg viewBox="0 0 180 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M190 230 C 150 170, 120 120, 140 60 C 150 30, 120 10, 80 20" stroke="var(--espresso)" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>
+        <path d="M140 135 C 95 145, 60 125, 30 140" stroke="var(--espresso)" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
+
+        <g class="dancing-leaf leaf-1">
+          <path d="M140 135 C 170 120, 175 90, 155 80 C 145 100, 142 120, 140 135" fill="var(--cocoa)" opacity="0.38"/>
+        </g>
+        <g class="dancing-leaf leaf-2">
+          <path d="M140 60 C 115 45, 110 15, 130 5 C 138 25, 138 45, 140 60" fill="var(--camel)" opacity="0.4"/>
+        </g>
+        <g class="dancing-leaf leaf-3">
+          <path d="M30 140 C 10 125, 5 100, 20 90 C 30 105, 28 125, 30 140" fill="var(--cocoa)" opacity="0.32"/>
+        </g>
+        <g class="dancing-leaf leaf-4">
+          <path d="M80 20 C 60 5, 35 15, 30 35 C 50 35, 70 30, 80 20" fill="var(--camel)" opacity="0.35"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Main Monogram Content -->
+    <div class="monogram">
+      <span class="init init-m">H</span>
+      <span class="amp">&amp;</span>
+      <span class="init init-h">M</span>
+
+      <span class="name name-m">Harold</span>
+      <span class="name-spacer"></span>
+      <span class="name name-h">Myca</span>
+    </div>
+
+    <div class="date">10 . 17 . 2026</div>
+
+    <div class="divider"></div>
+
+    <div class="tap-hint">
+      <svg class="play-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 5.14v13.72c0 .84.93 1.35 1.64.9l10.58-6.86a1.06 1.06 0 0 0 0-1.8L9.64 4.24C8.93 3.79 8 4.3 8 5.14z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+      </svg>
+      <span class="tap-text">Tap to continue</span>
+    </div>
+  </div>
+
+  <audio id="bg-audio" src="music.mp3" preload="auto"></audio>
+
+  <script>
+    const screen = document.getElementById('screen');
+    const leafCurtain = document.getElementById('leaf-curtain');
+    const audio = document.getElementById('bg-audio');
+
+    screen.addEventListener('click', async () => {
+      sessionStorage.setItem('playRequested', '1');
+      sessionStorage.setItem('leafUnveil', '1'); // Informs home.html to run unveiling animation
+
+      try { await audio.play(); } catch (e) {}
+
+      // Cover the screen with closing leaf curtain
+      leafCurtain.classList.add('cover-screen');
+
+      // Navigate after the leaves fully cover the view
+      setTimeout(() => {
+        window.location.href = "home.html?play=1";
+      }, 850);
+    });
+  </script>
+</body>
+</html>
