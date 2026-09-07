@@ -10,18 +10,8 @@
 
   <!-- Leaf Curtain Overlay (Covers the screen when tapped) -->
   <div class="leaf-curtain" id="leaf-curtain">
-    <div class="curtain-leaf curtain-top-left">
-      <svg viewBox="0 0 300 300" fill="none"><path d="M0 0 C150 50, 250 150, 300 300 C150 250, 50 150, 0 0" fill="var(--espresso)" opacity="0.98"/></svg>
-    </div>
-    <div class="curtain-leaf curtain-top-right">
-      <svg viewBox="0 0 300 300" fill="none"><path d="M300 0 C150 50, 50 150, 0 300 C150 250, 250 150, 300 0" fill="var(--cocoa)" opacity="0.98"/></svg>
-    </div>
-    <div class="curtain-leaf curtain-bottom-left">
-      <svg viewBox="0 0 300 300" fill="none"><path d="M0 300 C150 250, 250 150, 300 0 C150 50, 50 150, 0 300" fill="var(--cocoa)" opacity="0.98"/></svg>
-    </div>
-    <div class="curtain-leaf curtain-bottom-right">
-      <svg viewBox="0 0 300 300" fill="none"><path d="M300 300 C150 250, 50 150, 0 0 C150 50, 250 150, 300 300" fill="var(--espresso)" opacity="0.98"/></svg>
-    </div>
+    <div class="curtain-backdrop"></div>
+    <!-- individual leaves are injected here by script.js -->
   </div>
 
   <div class="screen" id="screen">
@@ -31,7 +21,7 @@
       <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M-10 -10 C 20 40, 40 90, 30 140 C 25 165, 55 185, 90 190" stroke="var(--espresso)" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>
         <path d="M30 85 C 60 70, 90 80, 115 65" stroke="var(--espresso)" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
-        
+
         <g class="dancing-leaf leaf-1">
           <path d="M30 140 C 5 130, -5 105, 10 90 C 25 110, 28 130, 30 140" fill="var(--cocoa)" opacity="0.35"/>
           <path d="M30 140 Q 10 115 10 90" stroke="var(--espresso)" stroke-width="1" opacity="0.4"/>
@@ -71,17 +61,16 @@
     </div>
 
     <!-- Main Monogram Content -->
-    <div class="monogram">
-      <span class="init init-m">H</span>
-      <span class="amp">&amp;</span>
-      <span class="init init-h">M</span>
-
-      <span class="name name-m">Harold</span>
-      <span class="name-spacer"></span>
-      <span class="name name-h">Myca</span>
+    <div class="emblem">
+      <!--
+        Drop your monogram image in the same folder as this file and
+        point the src at it. Use a PNG with a transparent background
+        so it sits cleanly on the tan page color.
+      -->
+      <img class="emblem-image" src="invbg.png" alt="Harold and Myca monogram">
     </div>
 
-    <div class="date">10 . 17 . 2026</div>
+    
 
     <div class="divider"></div>
 
@@ -93,27 +82,22 @@
     </div>
   </div>
 
-  <audio id="bg-audio" src="music.mp3" preload="auto"></audio>
+  <!-- Hidden YouTube player used as the background music source -->
+  <div id="yt-player" class="yt-player-hidden"></div>
 
-  <script>
-    const screen = document.getElementById('screen');
-    const leafCurtain = document.getElementById('leaf-curtain');
-    const audio = document.getElementById('bg-audio');
+  <!-- Sound toggle, shown only if autoplay had to start muted -->
+  <button id="sound-toggle" class="sound-toggle" type="button" aria-label="Turn sound on">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/>
+      <path d="M16.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M19 6a9 9 0 0 1 0 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+    </svg>
+    <span>Tap for sound</span>
+  </button>
 
-    screen.addEventListener('click', async () => {
-      sessionStorage.setItem('playRequested', '1');
-      sessionStorage.setItem('leafUnveil', '1'); // Informs home.html to run unveiling animation
-
-      try { await audio.play(); } catch (e) {}
-
-      // Cover the screen with closing leaf curtain
-      leafCurtain.classList.add('cover-screen');
-
-      // Navigate after the leaves fully cover the view
-      setTimeout(() => {
-        window.location.href = "home.html?play=1";
-      }, 850);
-    });
-  </script>
+  <!-- Loads the YouTube IFrame API, which calls onYouTubeIframeAPIReady() once ready -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="leaves.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
