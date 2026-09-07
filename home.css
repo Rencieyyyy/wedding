@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
 :root {
   --white: #faf8f4;
   --paper: #fffdf9;
@@ -88,11 +88,12 @@ html, body {
 }
 
 .nav-brand {
-  font-family: 'Sacramento', cursive;
-  font-size: 1.8rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   color: var(--brown-dark);
   text-decoration: none;
-  font-weight: 400;
 }
 
 .nav-menu {
@@ -182,9 +183,11 @@ html, body {
 }
 
 .hero-names {
-  font-family: 'Sacramento', cursive;
-  font-weight: 400;
-  font-size: clamp(2.6rem, 8vw, 4.4rem);
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(2.4rem, 7.5vw, 4rem);
+  letter-spacing: 0.01em;
   color: var(--paper);
   margin: 0;
   text-align: center;
@@ -514,6 +517,15 @@ html, body {
 }
 
 .parents-block { text-align: center; }
+.parents-block.align-right { text-align: right; }
+.parents-block.align-left { text-align: left; }
+
+@media (max-width: 720px) {
+  .parents-block.align-right,
+  .parents-block.align-left {
+    text-align: center;
+  }
+}
 
 .parents-block h3 {
   font-size: 0.85rem;
@@ -571,15 +583,23 @@ html, body {
 }
 
 /* Principal sponsors — two aligned columns */
+/* Principal sponsors — paired rows so wrapped names stay aligned */
 .sponsors-columns {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 0.7rem 2rem;
+  grid-template-columns: 1fr 2px 1fr;
+  grid-template-rows: repeat(14, auto);
+  column-gap: 2rem;
   max-width: 740px;
   margin: 0 auto;
 }
 
-.sponsors-col { display: flex; flex-direction: column; gap: 0.7rem; }
+.sponsors-col {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: 1 / -1;
+  gap: 0.9rem 0;
+  align-content: start;
+}
 
 .sponsors-col p {
   font-size: 1.1rem;
@@ -587,11 +607,80 @@ html, body {
   color: var(--brown-dark);
   margin: 0;
   text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-.sponsors-col.right p { text-align: left; }
+.sponsors-col.right p {
+  text-align: left;
+  justify-content: flex-start;
+}
 
-.sponsors-rule { width: 1px; background: var(--brown-faint); }
+.sponsors-rule {
+  grid-row: 1 / -1;
+  width: 1px;
+  background: var(--brown-faint);
+}
+/* Groomsmen / Bridesmaids — paired columns, same style as Principal Sponsors */
+.wedding-party-columns {
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr;
+  grid-template-rows: auto repeat(5, auto);
+  column-gap: 2rem;
+  row-gap: 0.9rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.wp-heading-row {
+  display: contents;
+}
+
+.wp-heading {
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--brown-mid);
+  margin: 0 0 0.6rem;
+  text-align: center;
+}
+
+.wp-col {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: 2 / -1;
+  grid-column: 1;
+  gap: inherit;
+  align-content: start;
+}
+
+.wp-col.right {
+  grid-column: 3;
+}
+
+.wp-col p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--brown-dark);
+  margin: 0;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.wp-col.right p {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.wp-rule {
+  grid-row: 1 / -1;
+  width: 1px;
+  background: var(--brown-faint);
+}
 
 /* Secondary sponsor roles */
 .roles-grid {
@@ -752,7 +841,7 @@ html, body {
   text-transform: uppercase;
   font-weight: 600;
   color: var(--brown);
-  margin: -2.2rem 0 1.1rem;
+  margin: 0.8rem 0 1.1rem;
 }
 
 .color-subtitle {
@@ -1084,10 +1173,25 @@ html, body {
   .entourage-parents { grid-template-columns: 1fr; gap: 1.6rem; }
   .roles-grid { grid-template-columns: 1fr; }
   .pair-sponsors { grid-template-columns: 1fr; }
-  .sponsors-columns { grid-template-columns: 1fr; }
-  .sponsors-col p, .sponsors-col.right p { text-align: center; }
-  .sponsors-rule { display: none; }
   .wishes-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 500px) {
+  .wedding-party-columns {
+    column-gap: 0.9rem;
+  }
+  .wp-col p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .sponsors-columns {
+    gap: 0.6rem 0.9rem;
+  }
+  .sponsors-col p {
+    font-size: 0.92rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
