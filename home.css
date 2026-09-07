@@ -588,7 +588,7 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 2px 1fr;
   grid-template-rows: repeat(14, auto);
-  column-gap: 2rem;
+  column-gap: 1.2rem;
   max-width: 740px;
   margin: 0 auto;
 }
@@ -602,7 +602,7 @@ html, body {
 }
 
 .sponsors-col p {
-  font-size: 1.1rem;
+  font-size: clamp(0.82rem, 2.6vw, 1.1rem);
   font-weight: 400;
   color: var(--brown-dark);
   margin: 0;
@@ -610,11 +610,12 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  white-space: nowrap;
 }
-
 .sponsors-col.right p {
   text-align: left;
   justify-content: flex-start;
+  white-space: nowrap;
 }
 
 .sponsors-rule {
