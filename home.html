@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harold & Myca - Wedding Invitation</title>
   <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="eve.css">
 </head>
 <body>
 
@@ -381,6 +382,41 @@
     </div>
   </section>
 
+  <!-- WEDDING EVE POPUP (shows when the website opens) -->
+  <div class="eve-popup-overlay" id="evePopup" aria-hidden="true">
+    <div class="eve-popup" role="dialog" aria-modal="true" aria-labelledby="evePopupTitle">
+      <button class="eve-popup-close" id="evePopupClose" aria-label="Close popup">&times;</button>
+
+      <div class="eve-popup-photo">
+        <!-- Replace weddingeve.jpg with your picture file -->
+        <img src="ring.jpg" alt="Wedding Eve Dinner venue"
+             onerror="this.parentNode.classList.add('empty')">
+        <span class="eve-photo-placeholder">Add your photo here</span>
+      </div>
+
+      <div class="eve-popup-body">
+        <p class="eve-popup-kicker">You're Invited</p>
+        <span class="eve-popup-tag">Wedding Eve &bull; October 16, 2026 &bull; 6:00 PM</span>
+        <h3 id="evePopupTitle">Wedding Eve Dinner</h3>
+        <p class="eve-desc">
+          Before we say "I do," we'd love to share a warm evening of good food,
+          laughter, and stories with our family and closest friends.
+          Come as you are and celebrate with us!
+        </p>
+
+        <div class="eve-countdown">
+          <div><b data-eve="days">0</b><small>Days</small></div>
+          <div><b data-eve="hours">0</b><small>Hours</small></div>
+          <div><b data-eve="mins">0</b><small>Mins</small></div>
+          <div><b data-eve="secs">0</b><small>Secs</small></div>
+        </div>
+
+        <a href="https://maps.app.goo.gl/b85eiX8kR8e3HixGA" target="_blank" rel="noopener" class="eve-popup-btn">Get Directions</a>
+      </div>
+    </div>
+  </div>
+
   <script src="home.js"></script>
+  <script src="eve.js"></script>
 </body>
 </html>

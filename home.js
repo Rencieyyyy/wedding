@@ -63,3 +63,52 @@ window.addEventListener('DOMContentLoaded', () => {
 
   tryPlayMusic();
 });
+// ===== Wedding Eve countdown + popup =====
+(function () {
+  // Philippine time (UTC+8). Change the date/time here if needed.
+  var EVE_TARGET = new Date('2026-10-16T18:00:00+08:00').getTime();
+
+  function tick() {
+    var diff = EVE_TARGET - Date.now();
+    if (diff < 0) diff = 0;
+
+    var vals = {
+      days:  Math.floor(diff / 86400000),
+      hours: Math.floor((diff % 86400000) / 3600000),
+      mins:  Math.floor((diff % 3600000) / 60000),
+      secs:  Math.floor((diff % 60000) / 1000)
+    };
+
+    document.querySelectorAll('[data-eve]').forEach(function (el) {
+      el.textContent = String(vals[el.dataset.eve]).padStart(2, '0');
+    });
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  var popup    = document.getElementById('evePopup');
+  var closeBtn = document.getElementById('evePopupClose');
+  if (!popup) return;
+
+  function openPopup() {
+    popup.classList.add('show');
+    popup.setAttribute('aria-hidden', 'false');
+  }
+  function closePopup() {
+    popup.classList.remove('show');
+    popup.setAttribute('aria-hidden', 'true');
+  }
+
+  // Pops out shortly after the website opens
+  window.addEventListener('load', function () {
+    setTimeout(openPopup, 800);
+  });
+
+  closeBtn.addEventListener('click', closePopup);   // the X button
+  popup.addEventListener('click', function (e) {    // click outside the box
+    if (e.target === popup) closePopup();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closePopup();
+  });
+})();
